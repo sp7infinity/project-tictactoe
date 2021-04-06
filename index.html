@@ -4,10 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet" type="text/css">
-    <title>Tic-tac-toe</title>
+    <title>Tic-Tac-Toe</title>
 </head>
 <body>
+    <h1 class="text-center mt-4"><span style="color: red;">Tic </span> <span style="color: green;">Tac </span><span style="color: steelblue;">Toe </span> </h2>
+    <h5 class="text-center"> Enter the players' name and click on Play to start the game!</h5>
+
+    <div class="container">
+        <form class="player-info mb-4">
+          <div class="form-group">
+            <label for="player1">Player 1 (X)</label>
+            <input type="text" class="form-control" id="player1" placeholder="Enter name of player 1...">
+          </div>
+    
+          <div class="form-group">
+            <label for="player2">Player 2 (O)</label>
+            <input type="text" class="form-control" id="player2" placeholder="Enter name of player 2...">
+          </div>
+    
+          <div class="text-center"><button type="submit" class="btn btn-success">Play</button></div>
+        </form>
+    </div>
+
     <script src="js/main.js"></script>    
 </body>
 </html>
