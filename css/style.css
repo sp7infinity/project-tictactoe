@@ -1,10 +1,10 @@
-/* .hidden {
+.hidden {
     display: none;
-} */
+}
 
 .alert {
   display:inline-block;
-  left: 42%;
+  left: 32%;
 }
 
 .game-grid {
