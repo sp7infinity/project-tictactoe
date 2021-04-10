@@ -54,9 +54,10 @@ const playGame = (() => {
   const namePlayerOne = document.querySelector('#player1');
   const namePlayerTwo = document.querySelector('#player2');
   const form = document.querySelector('.player-info');
+  // let modal = document.querySelector('.modal');
   let currPlayer;
-  let playerOne;
-  let playerTwo;
+  let playerOne, plOneMoves=0;
+  let playerTwo, plTwoMoves=0;
 
   const nextTurn = () => {
     currPlayer = currPlayer === playerOne ? playerTwo : playerOne;
@@ -77,15 +78,23 @@ const playGame = (() => {
       if (play !== null) {
         board.boardArr[play] = `${currPlayer.mark}`;
         board.render();
+        document.querySelector(`.cell-${play}`).classList.add('occupied');
+        if(currPlayer.name === playerOne.name)
+          plOneMoves++;
+        else  
+          plTwoMoves++;
         const winStatus = board.checkWin();
         if (winStatus === 'Tie') {
-          gameStatus.textContent = 'Tie!';
+          document.querySelector('.modal-head').textContent = `It's a Tie!`;
+          document.querySelector('.modal-body').textContent = `${playerOne.name} made ${plOneMoves} moves. ${playerTwo.name} made ${plTwoMoves} moves.`;
+          document.querySelector('.modal').style.display = "block";
         } else if (winStatus === null) {
           nextTurn();
           gameStatus.textContent = `${currPlayer.name}'s Turn`;
         } else {
-          gameStatus.textContent = `Winner is ${currPlayer.name}`;
-          board.render();
+          document.querySelector('.modal-head').textContent = `${currPlayer.name} is the Winner!!!`;
+          document.querySelector('.modal-body').textContent = `${currPlayer.name} made ${currPlayer.name === playerOne.name ? plOneMoves:plTwoMoves} moves.`;
+          document.querySelector('.modal').style.display = "block";
         }
       }
     });
@@ -113,6 +122,7 @@ const playGame = (() => {
     if (namePlayerOne.value !== '' && namePlayerTwo.value !== '') {
       startGame();
       form.classList.add('hidden');
+      document.querySelector('.instruct').classList.add('hidden');
       document.querySelector('.place').classList.remove('hidden');
     } else {
       window.location.reload();
